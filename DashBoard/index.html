@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TidyMind Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-left">
+            <img src="assests/images/logo_stt-removebg-preview.png" alt="TidyMind Logo" class="logo" />
+            <span class="brand-name">TidyMind</span>
+        </div>
+
+        <div class="navbar-center">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-regular fa-bell"></i>
+            <i class="fa-regular fa-comment"></i>
+        </div>
+
+        <div class="navbar-profile">
+            <img id="navProfileImg" src="default-profile.jpg" alt="Profile" class="profile-img" />
+            <span id="navProfileName">User</span>
+        </div>
+
+    </div>
+
+    <div class="dashboard">
+        <aside class="sidebar">
+            <ul>
+                <li>Dashboard</li>
+                <li>Personal</li>
+                <li>Work</li>
+                <li>Educational</li>
+                <li>Lifestyle</li>
+                <li>Market & Sales</li>
+            </ul>
+        </aside>
+
+        <div class="main-content">
+            <section class="welcome-card">
+                <div class="welcome-text">
+                    <div class="date-time">
+                        <span id="currentDate">May 27, 2025</span> | <span id="currentTime">2:17 pm</span>
+                    </div>
+                    <h2>Hi <span id="welcomeName">User</span>,<br> Welcome Back!</h2>
+                </div>
+                <img id="welcomeImg" src="assests/images/welcome-removebg-preview.png" alt="Illustration" />
+            </section>
+
+
+            <section class="action-cards">
+                <div class="card">
+                    <img src="assests/images/tdl-removebg-preview.png" alt="Add Task" />
+                    <p>Add new task</p>
+                    <i class="fa-solid fa-square-plus"></i>
+                </div><!-- Popup Form -->
+                <div id="taskPopup" class="popup">
+                    <div class="popup-content">
+                        <span class="close-btn" onclick="closePopup()">&times;</span>
+                        <h2>Add New Task</h2>
+                        <form id="taskForm">
+                            <label for="taskName">Task Name:</label>
+                            <input type="text" id="taskName" required>
+
+                            <label for="taskCategory">Category:</label>
+                            <input type="text" id="taskCategory" required>
+
+                            <button type="submit">Add Task</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="assests/images/todolist-removebg-preview.png" alt="Admin Board" />
+                    <p>Add new board</p>
+                    <i class="fa-solid fa-square-plus"></i>
+                </div>
+                <div class="card">
+                    <img src="assests/images/headset-removebg-preview.png" alt="Create Meeting" />
+                    <p>Create a meeting</p>
+                    <i class="fa-solid fa-square-plus"></i>
+                </div>
+            </section>
+
+
+            <section class="progress-section">
+                <h3>Your Progress</h3>
+                <ul class="progress-list">
+                    <li>
+                        <img src="assests/images/anly1-removebg-preview.png" alt="Personal" />
+                        <h4>Personal</h4>
+                        <p>Health, hobbies, learning, family, rest</p>
+                    </li>
+                    <li>
+                        <img src="assests/images/analy2-removebg-preview.png" alt="Work" />
+                        <h4>Work</h4>
+                        <p>building your task tracker app,design</p>
+                    </li>
+                    <li>
+                        <img src="assests/images/analy3-removebg-preview.png" alt="Lifestyle" />
+                        <h4>Lifestyle</h4>
+                        <p>Spending time on yourself and on the betterment of health</p>
+                    </li>
+                    <li>
+                        <img src="assests/images/anal4-removebg-preview.png" alt="Market & Sales" />
+                        <h4>Market & Sales</h4>
+                        <p>Researching user needs, branding, outreach, marketing</p>
+                    </li>
+                </ul>
+            </section>
+
+
+            <section class="tasks-calendar">
+                <div class="profile-box">
+                    <div class="profile-card">
+                        <img id="profileImage" src="default-profile.jpg" alt="Profile Image" />
+                        <p><span id="profileName">User</span><br><span id="profileRole">Role</span></p>
+                    </div>
+                </div>
+                <div class="calendar-box">
+                    <div class="calendar-header">
+                        <h4>My Calendar</h4>
+                        <div class="selectors">
+                            <select id="month">
+                                <option>January</option>
+                                <option>February</option>
+                                <option>March</option>
+                                <option>April</option>
+                                <option>May</option>
+                                <option>June</option>
+                                <option>July</option>
+                                <option>August</option>
+                                <option>September</option>
+                                <option>October</option>
+                                <option>November</option>
+                                <option>December</option>
+                            </select>
+                            <select id="year">
+                                <option>2024</option>
+                                <option>2025</option>
+                                <option>2026</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="calendar">
+                        <div id="calendar">
+                            <div id="calendar">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Sun</th>
+                                            <th>Mon</th>
+                                            <th>Tue</th>
+                                            <th>Wed</th>
+                                            <th>Thu</th>
+                                            <th>Fri</th>
+                                            <th>Sat</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>3</td>
+                                            <td>4</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>7</td>
+                                            <td>8</td>
+                                            <td>9</td>
+                                            <td>10</td>
+                                            <td>11</td>
+                                            <td>12</td>
+                                        </tr>
+                                        <!-- Add more rows as needed -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="upcoming-tasks card">
+                <div class="card-header">
+                    <h3>Upcoming tasks</h3>
+                    <button class="create-task-btn">Create new task</button>
+                </div>
+                <div id="task-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <span id="close-modal" class="close">&times;</span>
+                        <h3>Add New Task</h3>
+                        <form id="task-form">
+                            <label>
+                                Task:
+                                <input type="text" id="task-title" required />
+                            </label>
+                            <br /><br />
+                            <label>
+                                Category:
+                                <input type="text" id="task-category" required />
+                            </label>
+                            <br /><br />
+                            <button type="submit">Add Task</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="task-table">
+                    <div class="task-row heading">
+                        <span><strong>Task</strong></span>
+                        <span class="category-header"><strong>Category</strong></span>
+                        <span><strong>Action</strong></span>
+                    </div>
+                    <div class="task-list">
+                    </div>
+                    <button class="view-all-btn">View all</button>
+                </div>
+            </div>
+
+            <!-- Notifications -->
+            <div class="notifications-card">
+                <h3>Notifications</h3>
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+
+            <!-- Progress Chart -->
+            <div class="progress-chart-card">
+                <h3>
+                    This month's progress
+                    <img src="assests/images/chart stt.jpg" alt="Progress Icon" class="progress-icon" />
+                </h3>
+            </div>
+
+            <!-- Sticky Notes -->
+            <!-- Header Box -->
+            <div class="sticky-header-box">
+                <h3>My sticky notes</h3>
+                <i id="add-note-btn" class="fa-solid fa-square-plus" style="cursor:pointer;"></i>
+            </div>
+
+            <!-- Modal for adding note -->
+            <div id="note-modal" class="modal hidden">
+                <div class="modal-content">
+                    <span id="close-note-modal" class="close">&times;</span>
+                    <h3>Add New Note</h3>
+                    <form id="note-form">
+                        <label>
+                            Note content:
+                            <textarea id="note-content" rows="4" required></textarea>
+                        </label>
+                        <br /><br />
+                        <button type="submit">Add Note</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Sticky Notes Content Box -->
+            <div class="sticky-notes-card" id="sticky-notes-container">
+                <!-- Existing notes will be dynamically inserted here -->
+            </div>
+            <!-- Upcoming Events -->
+            <div class="upcoming-events card">
+                <h3>Upcoming events</h3>
+                <div class="avatars">
+                    <img src="avatar1.png" alt="user">
+                    <img src="avatar2.png" alt="user">
+                    <img src="avatar3.png" alt="user">
+                    <!-- Add avatars -->
+                </div>
+            </div>
+        </div>
+
+        <script src="index.js"></script>
+</body>
+
+</html>

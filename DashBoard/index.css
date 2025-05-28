@@ -1,0 +1,957 @@
+/* Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+@font-face {
+    font-family: 'Melodrama';
+    src: url('./assests/fonts/Melodrama-Semibold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Navbar Container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f1133;
+    color: white;
+    padding: 1rem 2rem;
+    flex-wrap: wrap;
+}
+
+/* Left: Logo + Brand */
+.navbar-left {
+    display: flex;
+    align-items: center;
+    font-family: 'Melodrama', cursive;
+
+}
+
+.logo {
+    width: 35px;
+    height: 35px;
+}
+
+.brand-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/* Center: Icons */
+.navbar-center {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 1.5rem;
+    margin-left: auto;
+}
+
+.navbar-center i {
+    color: white;
+}
+
+/* Right: Profile */
+.navbar-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.profile-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    margin-left: 1vw;
+}
+
+.profile-name {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    background: linear-gradient(180deg, #2c003e, #6f00ff);
+    color: #fff;
+    padding: 2rem 1rem;
+    width: 220px;
+    min-height: 100vh;
+}
+
+.sidebar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    margin: 1rem 0;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.sidebar li:hover {
+    background-color: #ffffff22;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .icons span {
+    margin-left: 1rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* Welcome Section */
+/* Welcome Section */
+.welcome-card {
+    background: linear-gradient(180deg, #1f1133, #5b08a6);
+    color: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 53vw;
+    height: 30vh;
+}
+
+/* Left section inside card */
+.welcome-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Date & time inside welcome card */
+.date-time {
+    font-size: 0.9rem;
+    color: #ddd;
+    font-weight: 400;
+    margin-top: -15px;
+}
+
+/* Greeting text */
+.welcome-card h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Illustration */
+.welcome-card img {
+    width: 130px;
+    height: auto;
+}
+
+.action-cards {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 53vw;
+    height: 25vh;
+    justify-content: center;
+    align-items: center;
+}
+/* Popup Styles */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 100px;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.popup-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  width: 300px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.delete-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.delete-btn:hover {
+  background-color: #cc0000;
+}
+
+.action-cards .card {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1.5rem 1rem 2.5rem;
+    /* Extra bottom padding for icon */
+    text-align: center;
+    min-width: 150px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background: linear-gradient(180deg, #1f1133, #5b08a6);
+
+}
+
+.action-cards .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.action-cards .card img {
+    max-width: 8vw;
+    margin-bottom: 1rem;
+}
+
+.action-cards .card p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0;
+}
+
+/* Plus icon specifically for 'Add new task' card */
+.action-cards .card.add-task {
+    padding-bottom: 3rem;
+    /* Space for plus icon */
+}
+
+.action-cards .card.add-task {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: white;
+    /* example purple color */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.action-cards .card .fa-solid.fa-square-plus {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 24px;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.action-cards .card.add-task .fa-plus-circle:hover {
+    color: #321672;
+}
+
+
+.progress-section {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    width: 53vw;
+    height: 45vh;
+    margin-top: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.progress-section h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.progress-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.progress-list li {
+    border-radius: 8px;
+    padding: 1rem;
+    width: 180px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+
+.progress-list li img {
+    max-width: 10vw;
+    object-fit: contain;
+}
+
+.progress-list li h4 {
+    font-size: 1rem;
+    margin: 0.3rem 0 0.2rem;
+    color: #333;
+
+}
+
+.progress-list li p {
+    font-size: 0.8rem;
+    color: #666;
+    margin: 0;
+
+
+}
+
+.tasks-calendar {
+    position: absolute;
+    top: 15vh;
+    right: 5vw;
+    gap: 2rem;
+}
+
+.profile-box {
+    flex: 1;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #1f1133, #5b08a6);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3vw;
+    height: 20vh;
+    width: 22vw;
+}
+
+/* Profile Card Inside Box */
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-card span {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+
+.calendar-box {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: 100%;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.calendar-header h4 {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.selectors select {
+    padding: 0.4rem 0.6rem;
+    margin-left: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+    background-color: #f9f9f9;
+}
+
+.calendar {
+    padding-top: 1rem;
+}
+
+#calendar table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.today {
+    background-color: #1f1133;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 50%;
+}
+
+#calendar th,
+#calendar td {
+    padding: 0.6rem;
+    border: 1px solid #e0e0e0;
+    height: 50px;
+    vertical-align: middle;
+}
+
+#calendar th {
+    background-color: #f5f5f5;
+    color: #555;
+}
+
+#calendar td {
+    background-color: #fff;
+    color: #333;
+}
+
+#calendar td:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+/* Optional: Today’s date styling */
+#calendar td.today {
+    background-color: #cce5ff;
+    font-weight: bold;
+    border: 2px solid #007bff;
+}
+
+.lower-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    max-width: 53vw;
+}
+.hidden {
+  display: none !important;
+}
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+.modal-content {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 320px;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.close {
+  position: absolute;
+  top: 8px; right: 12px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.create-task-btn,
+.view-all-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #5b28f3;
+    color: white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.task-table {
+    margin-top: 1rem;
+}
+
+.task-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+.task-row span {
+  flex: 1;
+}
+
+.task-row .category-header {
+  text-align: center;
+}
+
+.task-row span:last-child {
+  text-align: right;
+}
+
+
+.task-row.highlighted {
+    background-color: #5b28f3;
+    color: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    font-weight: bold;
+}
+.notifications-card {
+    background: linear-gradient(180deg, #1f1133, #5b08a6);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    max-width: 22vw;
+    margin-left: 57vw;  
+    margin-top: -60vh;
+}
+.notifications-card h3{
+    margin-bottom: 5px;
+    color: white;
+}
+
+.notifications-card ul {
+    list-style: none;
+    padding-left: 0;
+    color: white;
+}
+
+.notifications-card ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem; 
+    color: white;
+}
+
+
+/* Top header box with title + icon */
+.sticky-header-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+    background: linear-gradient(180deg, #1f1133, #5b08a6);
+  color: white;
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  max-width: 22vw;
+  margin-left: 57vw;
+}
+
+.sticky-header-box h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.sticky-header-box .fa-square-plus {
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: white;
+}
+
+.sticky-header-box .fa-square-plus:hover {
+  color: #ddd;
+}
+
+/* Notes card (separate box below) */
+.sticky-notes-card {
+  background-color: #6f00ff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 22vw;
+  margin-left: 57vw;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* Modal overlay */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+/* Hide modal when .hidden class is present */
+.hidden {
+  display: none !important;
+}
+
+/* Modal content box */
+.modal-content {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 320px;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Close button (X) */
+.close {
+  position: absolute;
+  top: 8px; right: 12px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Sticky notes container */
+.sticky-notes-card {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  max-width: 53vw;
+  margin-top: 1rem;
+}
+
+/* Each individual note style */
+.note {
+  background-color: #7d52f7;
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Bold horizontal line in note */
+.bold-line {
+  border: 2px solid #5b28f3;
+  margin: 0.5rem 0 1rem 0;
+}
+
+/* Sticky header box */
+.sticky-header-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Plus icon for adding note */
+.fa-square-plus {
+  font-size: 1.8rem;
+  color: #5b28f3;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.fa-square-plus:hover {
+  color: #7d52f7;
+}
+
+/* Textarea inside modal */
+#note-content {
+  width: 100%;
+  resize: vertical;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
+
+/* Add Note button in modal */
+#note-form button[type="submit"] {
+  padding: 0.5rem 1rem;
+  background-color: #5b28f3;
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#note-form button[type="submit"]:hover {
+  background-color: #7d52f7;
+}
+
+/* Delete button in notes */
+.delete-note-btn {
+  margin-top: 10px;
+  background-color: rgb(231, 76, 60);
+  color: white;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.delete-note-btn:hover {
+  background-color: rgb(231, 76, 60);
+}
+
+.note p {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.bold-line {
+  border: none;
+  border-top: 2px solid white;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.note-section {
+  margin-bottom: 1.2rem;
+  background-color: #6f00ff;
+  /* padding: 0.8rem 1rem; */
+  border-radius: 0.75rem;
+}
+
+.note-section h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.note-section ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  color: white;
+}
+
+.note-section ul li {
+  font-size: 0.88rem;
+  margin: 0.35rem 0;
+  color:white;
+}
+.progress-chart-card{
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    max-width: 22vw;
+    margin-left: 57vw;  /* This pushes the card to the right */
+}
+.progress-chart-card img{
+    width: 20vw;
+    height: 25vh;
+    margin-left: -25px;
+    margin-top: 10px;
+}
+
+.progress-chart-card h3 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.progress-chart-card.progress-icon {
+  display: block;
+  margin: 0 auto;   /* center image below heading */
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.upcoming-events {
+    background-color: #3e1ca7;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.avatars img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        justify-content: space-around;
+    }
+
+    .sidebar ul {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+
+    .welcome-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .welcome-card img {
+        margin-top: 1rem;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .navbar-left,
+    .navbar-center,
+    .navbar-profile {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .navbar-center {
+        order: 2;
+    }
+
+    .navbar-profile {
+        order: 3;
+    }
+
+    .lower-section {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .action-cards,
+    .progress-cards,
+    .tasks-calendar {
+        flex-direction: column;
+    }
+
+    .sidebar li {
+        font-size: 0.9rem;
+    }
+
+    .profile-card p {
+        font-size: 0.85rem;
+    }
+
+    .navbar {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .navbar-left,
+    .navbar-center,
+    .navbar-profile {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .navbar-center i,
+    .navbar-profile {
+        font-size: 1rem;
+    }
+
+    .profile-name {
+        font-size: 0.9rem;
+    }
+
+    .create-task-btn,
+    .view-all-btn {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .task-row {
+        font-size: 0.85rem;
+    }
+
+    .notifications ul li {
+        font-size: 0.85rem;
+    }
+
+    .sticky-notes {
+        font-size: 0.85rem;
+    }
+}

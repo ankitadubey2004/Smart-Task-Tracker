@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <title>Signup - Smart Task Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-left">
+            <img src="assests" alt="TidyMind Logo" class="logo" />
+            <span class="brand-name">TidyMind</span>
+        </div>
+
+        <div class="navbar-center">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-regular fa-bell"></i>
+            <i class="fa-regular fa-comment"></i>
+        </div>
+
+        <div class="navbar-profile">
+            <img src="profile.jpg" alt="Profile" class="profile-img" />
+            <span class="profile-name">Jane</span>
+        </div>
+    </div>
+
+    <div class="login-container">
+        <form class="login-form" onsubmit="handleSignup(event)">
+            <h2>Sign Up</h2>
+            <div class="input-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required />
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required />
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required />
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" required />
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p class="switch-link">
+            Already have an account? <a href="login.html">Login here</a>
+        </p>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
