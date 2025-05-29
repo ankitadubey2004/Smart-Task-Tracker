@@ -12,19 +12,20 @@ function updateDateTime() {
   if (timeElem) timeElem.textContent = now.toLocaleTimeString('en-US', optionsTime);
 }
 
-// Update profile info from localStorage
 function updateUserProfile() {
   const name = localStorage.getItem('name') || 'User';
   const role = localStorage.getItem('role') || 'Role';
-  const image = localStorage.getItem('image') || 'assets/images/default-profile.jpg';
+  const image = localStorage.getItem('image') || 'assests/images/prfille_picture-removebg-preview.png';
 
-  // Welcome message (if exists)
+  document.getElementById('navProfileName').textContent = name;
+  document.getElementById('navProfileImg').src = image;
+
+
   const welcomeText = document.getElementById("welcome-text");
   if (welcomeText) {
     welcomeText.innerHTML = `Hi ${name},<br> Welcome Back!`;
   }
 
-  // Profile card info
   const profileName = document.getElementById("profileName");
   const profileRole = document.getElementById("profileRole");
   const profileImage = document.getElementById("profileImage");
@@ -36,7 +37,6 @@ function updateUserProfile() {
     profileImage.alt = name;
   }
 
-  // Nav bar profile (if used)
   const navProfileName = document.getElementById("navProfileName");
   const navProfileImg = document.getElementById("navProfileImg");
   if (navProfileName) navProfileName.textContent = name;
@@ -45,70 +45,14 @@ function updateUserProfile() {
     navProfileImg.alt = name;
   }
 
-  // Dashboard welcome name (if used)
   const welcomeName = document.getElementById("welcomeName");
   if (welcomeName) welcomeName.textContent = name;
 }
 
-// Run everything on page load
 window.onload = function () {
   updateDateTime();
   updateUserProfile();
 };
-// Call functions on page load
-window.onload = function () {
-  updateDateTime();
-  updateUserProfile();
-};
-
-
-// Action-cards popUP of add task
-// Open popup when plus icon is clicked
-document.querySelectorAll('.card .fa-square-plus').forEach(icon => {
-  icon.addEventListener('click', () => {
-    document.getElementById('taskPopup').style.display = 'block';
-  });
-});
-
-// Close popup
-function closePopup() {
-  document.getElementById('taskPopup').style.display = 'none';
-}
-
-// Handle task form submission
-document.getElementById('taskForm').addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  const taskName = document.getElementById('taskName').value.trim();
-  const taskCategory = document.getElementById('taskCategory').value.trim();
-
-  if (!taskName || !taskCategory) {
-    alert('Please fill in all fields');
-    return;
-  }
-
-  // Create new task row with delete button
-  const taskRow = document.createElement('div');
-  taskRow.className = 'task-row';
-  taskRow.innerHTML = `
-    <span>${taskName}</span>
-    <span>${taskCategory}</span>
-    <span><button class="delete-btn">Delete</button></span>
-  `;
-
-  // Append to task list
-  document.querySelector('.task-list').appendChild(taskRow);
-
-  // Add delete functionality
-  taskRow.querySelector('.delete-btn').addEventListener('click', () => {
-    taskRow.remove();
-  });
-
-  // Clear form and close popup
-  document.getElementById('taskForm').reset();
-  closePopup();
-});
-
 const monthSelect = document.getElementById("month");
 const yearSelect = document.getElementById("year");
 const calendar = document.getElementById("calendar");
@@ -194,123 +138,159 @@ yearSelect.addEventListener("change", () => {
   generateCalendar(monthSelect.selectedIndex, parseInt(yearSelect.value));
 });
 
-// Elements for task modal and task list
-// Get DOM elements
-const createTaskBtn = document.querySelector(".create-task-btn");
-const modal = document.getElementById("task-modal");
-const closeModalBtn = document.getElementById("close-modal");
-const taskForm = document.getElementById("task-form");
-const taskList = document.querySelector(".task-list");
 
-// Show modal when clicking 'Create new task'
-createTaskBtn.addEventListener("click", () => {
-  modal.classList.remove("hidden");
-});
+document.addEventListener('DOMContentLoaded', function () {
+  const createTaskBtn = document.querySelector(".create-task-btn");
+  const modal = document.getElementById("task-modal");
+  const closeModalBtn = document.getElementById("close-modal");
+  const form = document.getElementById("task-form");
+  const taskListContainer = document.querySelector(".task-list");
 
-// Close modal when clicking the close icon
-closeModalBtn.addEventListener("click", () => {
-  modal.classList.add("hidden");
-});
+  const priorityValue = { high: 1, medium: 2, low: 3 };
+  let tasks = [];
 
-// Close modal if clicking outside modal content
-window.addEventListener("click", (event) => {
-  if (event.target === modal) {
+  // Event listeners for modal open/close
+  createTaskBtn?.addEventListener("click", () => modal?.classList.remove("hidden"));
+  closeModalBtn?.addEventListener("click", () => modal?.classList.add("hidden"));
+  window.addEventListener("click", e => {
+    if (e.target === modal) modal?.classList.add("hidden");
+  });
+
+  // Load tasks from localStorage on page load
+  function loadTasks() {
+    tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.sort((a, b) => priorityValue[a.priority] - priorityValue[b.priority]);
+    renderTasks();
+  }
+
+  // Save tasks to localStorage
+  function saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
+
+  // Render task rows
+  function renderTasks() {
+    taskListContainer.innerHTML = "";
+    tasks.forEach((task, index) => {
+      const row = document.createElement("div");
+      row.classList.add("task-row");
+      row.innerHTML = `
+        <span><strong>• ${task.title}</strong></span>
+        <span>${task.category}</span>
+        <span>${task.deadline}</span>
+        <span style="color:${task.priority === 'high' ? 'red' : task.priority === 'medium' ? 'orange' : 'green'}">${task.priority}</span>
+        <span><button data-index="${index}" class="delete-btn">Delete</button></span>
+      `;
+      row.querySelector(".delete-btn").addEventListener("click", () => {
+        tasks.splice(index, 1);
+        saveTasks();
+        renderTasks();
+      });
+      taskListContainer.appendChild(row);
+    });
+  }
+
+  // Form submit handler
+  form?.addEventListener("submit", e => {
+    e.preventDefault();
+    const title = document.getElementById("task-title").value.trim();
+    const category = document.getElementById("task-category").value.trim();
+    const deadline = document.getElementById("task-deadline").value;
+    const priority = document.getElementById("task-priority").value;
+
+    if (!title || !category || !deadline || !priority) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    tasks.push({ title, category, deadline, priority });
+    tasks.sort((a, b) => priorityValue[a.priority] - priorityValue[b.priority]);
+    saveTasks();
+    renderTasks();
+    form.reset();
     modal.classList.add("hidden");
-  }
-});
-
-// Function to create task row element
-function createTaskRow(title, category) {
-  const taskRow = document.createElement("div");
-  taskRow.classList.add("task-row");
-
-  const titleSpan = document.createElement("span");
-  titleSpan.textContent = "• " + title;
-
-  const categorySpan = document.createElement("span");
-  categorySpan.textContent = category;
-
-  const deleteBtn = document.createElement("button");
-  deleteBtn.textContent = "Delete";
-  deleteBtn.style.marginLeft = "1rem";
-  deleteBtn.style.backgroundColor = "#e74c3c";
-  deleteBtn.style.color = "white";
-  deleteBtn.style.border = "none";
-  deleteBtn.style.borderRadius = "0.3rem";
-  deleteBtn.style.cursor = "pointer";
-  deleteBtn.style.padding = "0.2rem 0.5rem";
-  deleteBtn.style.fontSize = "0.8rem";
-
-  // Delete task event
-  deleteBtn.addEventListener("click", () => {
-    taskRow.remove();
-    removeTaskFromStorage(title, category);
   });
 
-  taskRow.appendChild(titleSpan);
-  taskRow.appendChild(categorySpan);
-  taskRow.appendChild(deleteBtn);
+  // Load on start
+  loadTasks();
 
-  return taskRow;
-}
+  // Profile dropdown logic
+  const profileToggle = document.getElementById('profileMenuToggle');
+  const profileDropdown = document.getElementById('profileDropdown');
+  const profileNameElem = document.getElementById('navProfileName');
+  const profileImgElem = document.getElementById('navProfileImg');
+  const logoutBtn = document.getElementById('logoutBtn');
 
-// Load tasks from localStorage
-function loadTasks() {
-  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  taskList.innerHTML = "";
-  tasks.forEach(({ title, category }) => {
-    const taskRow = createTaskRow(title, category);
-    taskList.appendChild(taskRow);
-  });
-}
-
-// Save task list on addition
-function saveTaskToStorage(title, category) {
-  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  tasks.push({ title, category });
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-}
-
-// Remove task from localStorage
-function removeTaskFromStorage(title, category) {
-  let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  tasks = tasks.filter(
-    (task) => !(task.title === title && task.category === category)
-  );
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-}
-
-// Handle form submit to add new task
-taskForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const titleInput = document.getElementById("task-title");
-  const categoryInput = document.getElementById("task-category");
-
-  const title = titleInput.value.trim();
-  const category = categoryInput.value.trim();
-
-  if (!title || !category) {
-    alert("Please fill in both Task and Category.");
-    return;
+  function setProfileUI(name, image) {
+    profileNameElem.textContent = name || 'User';
+    profileImgElem.src = image || 'assests/images/prfille_picture-removebg-preview.png';
   }
 
-  // Create and append task row
-  const newTaskRow = createTaskRow(title, category);
-  taskList.appendChild(newTaskRow);
+  profileToggle?.addEventListener('click', () => {
+    profileDropdown?.classList.toggle('hidden');
+  });
 
-  // Save task
-  saveTaskToStorage(title, category);
+  const token = localStorage.getItem('token');
+  if (token) {
+    const name = localStorage.getItem('name');
+    const image = localStorage.getItem('image');
+    setProfileUI(name, image);
+  } else {
+    setProfileUI('User', 'assests/images/prfille_picture-removebg-preview.png');
+  }
 
-  // Reset form and hide modal
-  taskForm.reset();
-  modal.classList.add("hidden");
+  logoutBtn?.addEventListener('click', () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('name');
+    localStorage.removeItem('role');
+    localStorage.removeItem('image');
+    setProfileUI('User', 'assests/images/prfille_picture-removebg-preview.png');
+    profileDropdown?.classList.add('hidden');
+    window.location.href = 'login.html';
+  });
+
+  // Icon click to open popup
+  document.querySelectorAll('.card .fa-square-plus').forEach(icon => {
+    icon.addEventListener('click', () => {
+      document.getElementById('taskPopup').style.display = 'block';
+    });
+  });
+
+  function closePopup() {
+    document.getElementById('taskPopup').style.display = 'none';
+  }
+
+  document.getElementById('taskForm')?.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const taskName = document.getElementById('taskName').value.trim();
+    const taskCategory = document.getElementById('taskCategory').value.trim();
+    const taskDeadline = document.getElementById('taskDeadline').value;
+
+    if (!taskName || !taskCategory || !taskDeadline) {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    const taskRow = document.createElement('div');
+    taskRow.className = 'task-row';
+    taskRow.innerHTML = `
+      <span>${taskName}</span>
+      <span>${taskCategory}</span>
+      <span>${taskDeadline}</span>
+      <span><button class="delete-btn">Delete</button></span>
+    `;
+
+    document.querySelector('.task-list').appendChild(taskRow);
+
+    taskRow.querySelector('.delete-btn').addEventListener('click', () => {
+      taskRow.remove();
+    });
+
+    this.reset();
+    closePopup();
+  });
 });
-
-// Load existing tasks when page loads
-loadTasks();
-
-// Get DOM elements
 const addNoteBtn = document.getElementById("add-note-btn");
 const noteModal = document.getElementById("note-modal");
 const closeNoteModalBtn = document.getElementById("close-note-modal");
@@ -318,29 +298,24 @@ const noteForm = document.getElementById("note-form");
 const noteContentInput = document.getElementById("note-content");
 const stickyNotesContainer = document.getElementById("sticky-notes-container");
 
-// Show modal on clicking + icon
 addNoteBtn.addEventListener("click", () => {
   noteModal.classList.remove("hidden");
 });
 
-// Close modal on clicking X
 closeNoteModalBtn.addEventListener("click", () => {
   noteModal.classList.add("hidden");
 });
 
-// Close modal if clicked outside modal content
 window.addEventListener("click", (e) => {
   if (e.target === noteModal) {
     noteModal.classList.add("hidden");
   }
 });
 
-// Function to create a note element
 function createNoteElement(content) {
   const noteDiv = document.createElement("div");
   noteDiv.classList.add("note");
 
-  // Inner HTML structure of the note
   noteDiv.innerHTML = `
     <p><strong>Note:</strong></p>
     <hr class="bold-line" />
@@ -357,7 +332,6 @@ function createNoteElement(content) {
     ">Delete</button>
   `;
 
-  // Delete note event
   const deleteBtn = noteDiv.querySelector(".delete-note-btn");
   deleteBtn.addEventListener("click", () => {
     noteDiv.remove();
@@ -367,7 +341,6 @@ function createNoteElement(content) {
   return noteDiv;
 }
 
-// Load notes from localStorage and render
 function loadNotes() {
   const notes = JSON.parse(localStorage.getItem("stickyNotes")) || [];
   stickyNotesContainer.innerHTML = "";
@@ -377,21 +350,18 @@ function loadNotes() {
   });
 }
 
-// Save new note in localStorage
 function saveNoteToStorage(content) {
   const notes = JSON.parse(localStorage.getItem("stickyNotes")) || [];
   notes.push(content);
   localStorage.setItem("stickyNotes", JSON.stringify(notes));
 }
 
-// Remove note from localStorage
 function removeNoteFromStorage(content) {
   let notes = JSON.parse(localStorage.getItem("stickyNotes")) || [];
   notes = notes.filter((note) => note !== content);
   localStorage.setItem("stickyNotes", JSON.stringify(notes));
 }
 
-// Handle form submit - add new note
 noteForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -401,53 +371,25 @@ noteForm.addEventListener("submit", (e) => {
     return;
   }
 
-  // Create note element and add to container
   const newNote = createNoteElement(content);
   stickyNotesContainer.appendChild(newNote);
 
-  // Save in storage
   saveNoteToStorage(content);
 
-  // Reset form and hide modal
   noteForm.reset();
   noteModal.classList.add("hidden");
 });
 
-// Load notes on page load
 loadNotes();
-// Show/Hide Modal
 const addNotificationBtn = document.getElementById("add-notification-btn");
 const notificationModal = document.getElementById("notification-modal");
 const closeNotificationModal = document.getElementById("close-notification-modal");
 
 addNotificationBtn.addEventListener("click", () => {
-    notificationModal.classList.remove("hidden");
+  notificationModal.classList.remove("hidden");
 });
 
 closeNotificationModal.addEventListener("click", () => {
-    notificationModal.classList.add("hidden");
+  notificationModal.classList.add("hidden");
 });
 
-// Add Notification
-const notificationForm = document.getElementById("notification-form");
-const notificationTextInput = document.getElementById("notification-text");
-const notificationsList = document.getElementById("notifications-list");
-
-notificationForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const text = notificationTextInput.value.trim();
-    if (text !== "") {
-        const li = document.createElement("li");
-        li.innerHTML = `${text} <span class="remove-btn">✖</span>`;
-        notificationsList.appendChild(li);
-        notificationTextInput.value = "";
-        notificationModal.classList.add("hidden");
-    }
-});
-
-// Remove Notification
-notificationsList.addEventListener("click", (e) => {
-    if (e.target.classList.contains("remove-btn")) {
-        e.target.parentElement.remove();
-    }
-});

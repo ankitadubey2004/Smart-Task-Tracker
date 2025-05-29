@@ -21,11 +21,18 @@
             <i class="fa-solid fa-magnifying-glass"></i>
             <i class="fa-regular fa-bell"></i>
             <i class="fa-regular fa-comment"></i>
+            <a href="login.html" class="login-link">Login</a>
         </div>
 
-        <div class="navbar-profile">
-            <img id="navProfileImg" src="default-profile.jpg" alt="Profile" class="profile-img" />
+        <div class="navbar-profile" id="profileMenuToggle">
+            <img id="navProfileImg" src="assests/images/prfille_picture-removebg-preview.png" alt="Profile"
+                class="profile-img" />
             <span id="navProfileName">User</span>
+
+            <!-- Dropdown menu -->
+            <div id="profileDropdown" class="profile-dropdown hidden">
+                <button id="logoutBtn">Logout</button>
+            </div>
         </div>
 
     </div>
@@ -33,7 +40,7 @@
     <div class="dashboard">
         <aside class="sidebar">
             <ul>
-                <li>Dashboard</li>
+                <li><a href="index.html">Dashboard</a></li>
                 <li>Personal</li>
                 <li>Work</li>
                 <li>Educational</li>
@@ -64,17 +71,33 @@
                     <div class="popup-content">
                         <span class="close-btn" onclick="closePopup()">&times;</span>
                         <h2>Add New Task</h2>
-                        <form id="taskForm">
-                            <label for="taskName">Task Name:</label>
-                            <input type="text" id="taskName" required>
-
-                            <label for="taskCategory">Category:</label>
-                            <input type="text" id="taskCategory" required>
-
+                        <form id="taskform">
+                            <label>
+                                Task:
+                                <input type="text" id="task-title" required />
+                            </label><br /><br />
+                            <label>
+                                Category:
+                                <input type="text" id="task-category" required />
+                            </label><br /><br />
+                            <label>
+                                Deadline:
+                                <input type="date" id="task-deadline" required />
+                            </label><br /><br />
+                            <label>
+                                Priority:
+                                <select id="task-priority" required>
+                                    <option value="">Select</option>
+                                    <option value="high">High</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="low">Low</option>
+                                </select>
+                            </label><br /><br />
                             <button type="submit">Add Task</button>
                         </form>
                     </div>
                 </div>
+
 
                 <div class="card">
                     <img src="assests/images/todolist-removebg-preview.png" alt="Admin Board" />
@@ -119,8 +142,11 @@
             <section class="tasks-calendar">
                 <div class="profile-box">
                     <div class="profile-card">
-                        <img id="profileImage" src="default-profile.jpg" alt="Profile Image" />
-                        <p><span id="profileName">User</span><br><span id="profileRole">Role</span></p>
+                        <img id="profileImage" src="assests/images/prfille_picture-removebg-preview.png"
+                            alt="Profile Image" />
+                    </div>
+                    <div class="profile-text">
+                        <span id="profileName">User</span><br />
                     </div>
                 </div>
                 <div class="calendar-box">
@@ -192,41 +218,63 @@
                 </div>
             </section>
             <div class="upcoming-tasks card">
-                <div class="card-header">
-                    <h3>Upcoming tasks</h3>
-                    <button class="create-task-btn">Create new task</button>
-                </div>
+                <!-- Task Modal -->
                 <div id="task-modal" class="modal hidden">
                     <div class="modal-content">
-                        <span id="close-modal" class="close">&times;</span>
+                        <span id="close-modal" class="close" style="cursor:pointer;float:right;">&times;</span>
                         <h3>Add New Task</h3>
                         <form id="task-form">
                             <label>
                                 Task:
                                 <input type="text" id="task-title" required />
-                            </label>
-                            <br /><br />
+                            </label><br /><br />
                             <label>
                                 Category:
                                 <input type="text" id="task-category" required />
-                            </label>
-                            <br /><br />
+                            </label><br /><br />
+                            <label>
+                                Deadline:
+                                <input type="date" id="task-deadline" required />
+                            </label><br /><br />
+                            <label>
+                                Priority:
+                                <select id="task-priority" required>
+                                    <option value="">Select</option>
+                                    <option value="high">High</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="low">Low</option>
+                                </select>
+                            </label><br /><br />
                             <button type="submit">Add Task</button>
                         </form>
                     </div>
                 </div>
 
+                <!-- Header -->
+                <!-- <div class="card-header">
+                    <h3>Upcoming tasks</h3>
+                    <button class="create-task-btn">Create new task</button>
+                </div>
+ -->
+                <!-- Task Table -->
                 <div class="task-table">
-                    <div class="task-row heading">
-                        <span><strong>Task</strong></span>
-                        <span class="category-header"><strong>Category</strong></span>
-                        <span><strong>Action</strong></span>
+                    <div class="task-row heading" style="font-weight:bold;">
+                        <span>Task</span>
+                        <span>Category</span>
+                        <span>Deadline</span>
+                        <span>Priority</span>
+                        <span>Action</span>
                     </div>
+
+                    <!-- Task container -->
                     <div class="task-list">
+                        <!-- JS will append tasks here -->
                     </div>
+
                     <button class="view-all-btn">View all</button>
                 </div>
             </div>
+
 
             <!-- Notifications -->
             <div class="notifications-card">
@@ -269,18 +317,14 @@
 
             <!-- Sticky Notes Content Box -->
             <div class="sticky-notes-card" id="sticky-notes-container">
+                <h3>Note</h3>
+                <hr />
+                <ul>
+                    <li></li>
+                </ul>
                 <!-- Existing notes will be dynamically inserted here -->
             </div>
-            <!-- Upcoming Events -->
-            <div class="upcoming-events card">
-                <h3>Upcoming events</h3>
-                <div class="avatars">
-                    <img src="avatar1.png" alt="user">
-                    <img src="avatar2.png" alt="user">
-                    <img src="avatar3.png" alt="user">
-                    <!-- Add avatars -->
-                </div>
-            </div>
+
         </div>
 
         <script src="index.js"></script>

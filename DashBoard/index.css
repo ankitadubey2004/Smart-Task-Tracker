@@ -66,6 +66,21 @@ body {
     gap: 0.2rem;
 }
 
+.login-link {
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid #7d52f7;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.login-link:hover {
+    background-color: #6f00ff;
+    color: #fff;
+}
+
 .profile-img {
     width: 35px;
     height: 35px;
@@ -73,11 +88,45 @@ body {
     object-fit: cover;
     border: 2px solid #fff;
     margin-left: 1vw;
+    color: white;
 }
 
 .profile-name {
     font-size: 1rem;
     font-weight: 500;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 60px;
+    /* Adjust based on navbar height */
+    right: 2rem;
+    background-color: white;
+    color: #333;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.profile-dropdown button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    color: #333;
+}
+
+.profile-dropdown button:hover {
+    color: #5b28f3;
+}
+
+.hidden {
+    display: none;
 }
 
 .dashboard {
@@ -115,6 +164,12 @@ body {
 
 .sidebar li:hover {
     background-color: #ffffff22;
+}
+
+.sidebar li a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 /* Main Content */
@@ -191,43 +246,48 @@ header .icons span {
     justify-content: center;
     align-items: center;
 }
+
 /* Popup Styles */
 .popup {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  padding-top: 100px;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.6);
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .popup-content {
-  background-color: #fff;
-  margin: auto;
-  padding: 20px;
-  width: 300px;
-  border-radius: 10px;
-  position: relative;
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+    position: relative;
 }
 
 .close-btn {
-  position: absolute;
-  top: 10px; right: 15px;
-  font-size: 24px;
-  cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
 }
+
 .delete-btn {
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 5px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .delete-btn:hover {
-  background-color: #cc0000;
+    background-color: #cc0000;
 }
 
 .action-cards .card {
@@ -379,20 +439,29 @@ header .icons span {
     display: flex;
     align-items: center;
     gap: 1rem;
+    text-align: center;
+
 }
 
 .profile-card img {
-    width: 50px;
-    height: 50px;
+    width: 6vw;
+    height: 10vh;
     border-radius: 50%;
     object-fit: cover;
+    color: white;
+    margin-left: 7vw;
 }
 
-.profile-card span {
-    font-size: 0.9rem;
-    color: #666;
-}
 
+
+.profile-text #profileName {
+    font-weight: 700;
+    font-size: 1.4rem;
+    display: block;
+    color: white;
+    margin-left: 7vw;
+    margin-bottom: -18px;
+}
 
 .calendar-box {
     background: #fff;
@@ -489,31 +558,39 @@ header .icons span {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     max-width: 53vw;
 }
+
 .hidden {
-  display: none !important;
+    display: none !important;
 }
+
 .modal {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
 }
+
 .modal-content {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  width: 320px;
-  position: relative;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 320px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
+
 .close {
-  position: absolute;
-  top: 8px; right: 12px;
-  font-size: 1.5rem;
-  cursor: pointer;
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
 .card-header {
@@ -538,23 +615,24 @@ header .icons span {
 }
 
 .task-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #eee;
-  font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
 }
 
 .task-row span {
-  flex: 1;
+    flex: 1;
+    text-align: center;
 }
 
 .task-row .category-header {
-  text-align: center;
+    text-align: center;
 }
 
 .task-row span:last-child {
-  text-align: right;
+    text-align: right;
 }
 
 
@@ -565,16 +643,18 @@ header .icons span {
     border-radius: 0.75rem;
     font-weight: bold;
 }
+
 .notifications-card {
     background: linear-gradient(180deg, #1f1133, #5b08a6);
     border-radius: 1rem;
     padding: 1.5rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     max-width: 22vw;
-    margin-left: 57vw;  
+    margin-left: 57vw;
     margin-top: -60vh;
 }
-.notifications-card h3{
+
+.notifications-card h3 {
     margin-bottom: 5px;
     color: white;
 }
@@ -588,221 +668,244 @@ header .icons span {
 .notifications-card ul li {
     padding: 0.5rem 0;
     border-bottom: 1px solid #eee;
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
     color: white;
 }
 
 
 /* Top header box with title + icon */
 .sticky-header-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: linear-gradient(180deg, #1f1133, #5b08a6);
-  color: white;
-  padding: 0.8rem 1rem;
-  border-radius: 1rem;
-  max-width: 22vw;
-  margin-left: 57vw;
+    color: white;
+    padding: 0.8rem 1rem;
+    border-radius: 1rem;
+    max-width: 22vw;
+    margin-left: 57vw;
 }
 
 .sticky-header-box h3 {
-  margin: 0;
-  font-size: 1.1rem;
+    margin: 0;
+    font-size: 1.1rem;
 }
 
 .sticky-header-box .fa-square-plus {
-  font-size: 1.4rem;
-  cursor: pointer;
-  color: white;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: white;
 }
 
 .sticky-header-box .fa-square-plus:hover {
-  color: #ddd;
+    color: #ddd;
 }
 
 /* Notes card (separate box below) */
 .sticky-notes-card {
-  background-color: #6f00ff;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 22vw;
-  margin-left: 57vw;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #6f00ff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 22vw;
+    margin-left: 57vw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 /* Modal overlay */
 .modal {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
 }
 
 /* Hide modal when .hidden class is present */
 .hidden {
-  display: none !important;
+    display: none !important;
 }
 
 /* Modal content box */
 .modal-content {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  width: 320px;
-  position: relative;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 320px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Close button (X) */
 .close {
-  position: absolute;
-  top: 8px; right: 12px;
-  font-size: 1.5rem;
-  cursor: pointer;
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
 /* Sticky notes container */
-.sticky-notes-card {
-  background-color: #fff;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  max-width: 53vw;
-  margin-top: 1rem;
-}
 
 /* Each individual note style */
 .note {
-  background-color: #7d52f7;
-  border-radius: 1rem;
-  padding: 1rem 1.5rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-  font-size: 0.95rem;
-  line-height: 1.4;
+    background-color: #7d52f7;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    font-size: 0.95rem;
+    line-height: 1.4;
 }
 
 /* Bold horizontal line in note */
 .bold-line {
-  border: 2px solid #5b28f3;
-  margin: 0.5rem 0 1rem 0;
+    border: 2px solid #5b28f3;
+    margin: 0.5rem 0 1rem 0;
 }
 
 /* Sticky header box */
 .sticky-header-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sticky-notes-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.sticky-notes-card hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+.sticky-notes-card ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.sticky-notes-card li {
+    margin-bottom: 6px;
+    font-size: 1rem;
+    color: white;
 }
 
 /* Plus icon for adding note */
 .fa-square-plus {
-  font-size: 1.8rem;
-  color: #5b28f3;
-  cursor: pointer;
-  transition: color 0.3s ease;
+    font-size: 1.8rem;
+    color: #5b28f3;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
 .fa-square-plus:hover {
-  color: #7d52f7;
+    color: #7d52f7;
 }
 
 /* Textarea inside modal */
 #note-content {
-  width: 100%;
-  resize: vertical;
-  font-size: 1rem;
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  border: 1px solid #ccc;
-  font-family: inherit;
+    width: 100%;
+    resize: vertical;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    border: 1px solid #ccc;
+    font-family: inherit;
 }
 
 /* Add Note button in modal */
 #note-form button[type="submit"] {
-  padding: 0.5rem 1rem;
-  background-color: #5b28f3;
-  border: none;
-  color: white;
-  font-weight: 600;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    padding: 0.5rem 1rem;
+    background-color: #5b28f3;
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 #note-form button[type="submit"]:hover {
-  background-color: #7d52f7;
+    background-color: #7d52f7;
 }
 
 /* Delete button in notes */
 .delete-note-btn {
-  margin-top: 10px;
-  background-color: rgb(231, 76, 60);
-  color: white;
-  border: none;
-  border-radius: 0.3rem;
-  padding: 0.3rem 0.6rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease;
+    margin-top: 10px;
+    background-color: rgb(231, 76, 60);
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
 }
 
 .delete-note-btn:hover {
-  background-color: rgb(231, 76, 60);
+    background-color: rgb(231, 76, 60);
 }
 
 .note p {
-  font-size: 1rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: white;
 }
 
 .bold-line {
-  border: none;
-  border-top: 2px solid white;
-  margin: 0.5rem 0 1rem 0;
+    border: none;
+    border-top: 2px solid white;
+    margin: 0.5rem 0 1rem 0;
 }
 
 .note-section {
-  margin-bottom: 1.2rem;
-  background-color: #6f00ff;
-  /* padding: 0.8rem 1rem; */
-  border-radius: 0.75rem;
+    margin-bottom: 1.2rem;
+    background-color: #6f00ff;
+    /* padding: 0.8rem 1rem; */
+    border-radius: 0.75rem;
 }
 
 .note-section h4 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: white;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: white;
 }
 
 .note-section ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  color: white;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    color: white;
 }
 
 .note-section ul li {
-  font-size: 0.88rem;
-  margin: 0.35rem 0;
-  color:white;
+    font-size: 0.88rem;
+    margin: 0.35rem 0;
+    color: white;
 }
-.progress-chart-card{
+
+.progress-chart-card {
     background-color: #fff;
     border-radius: 1rem;
     padding: 1.5rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     max-width: 22vw;
-    margin-left: 57vw;  /* This pushes the card to the right */
+    margin-left: 57vw;
+    /* This pushes the card to the right */
 }
-.progress-chart-card img{
+
+.progress-chart-card img {
     width: 20vw;
     height: 25vh;
     margin-left: -25px;
@@ -810,16 +913,17 @@ header .icons span {
 }
 
 .progress-chart-card h3 {
-  color: #333;
-  margin-bottom: 0.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
 }
 
 .progress-chart-card.progress-icon {
-  display: block;
-  margin: 0 auto;   /* center image below heading */
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    /* center image below heading */
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
 }
 
 .upcoming-events {
@@ -841,7 +945,7 @@ header .icons span {
 /* Responsive Design */
 @media (max-width: 1024px) {
     .dashboard {
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .sidebar {
@@ -899,11 +1003,10 @@ header .icons span {
 
 }
 
-@media (max-width: 600px) {
+@media (max-width: 764px) {
 
     .action-cards,
-    .progress-cards,
-    .tasks-calendar {
+    .progress-cards {
         flex-direction: column;
     }
 
@@ -920,12 +1023,37 @@ header .icons span {
         gap: 1rem;
     }
 
-    .navbar-left,
-    .navbar-center,
+    .navbar-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .navbar-left span {
+        margin-left: 8vw;
+        margin-top: -6vh;
+
+    }
+
+    .navbar-center {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-left: 70vh;
+    }
+
     .navbar-profile {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
+    }
+
+    .navbar-profile span {
+        margin-bottom: 5vh;
+    }
+
+    .profile-img {
+        margin-top: -10vh;
     }
 
     .navbar-center i,
@@ -937,21 +1065,68 @@ header .icons span {
         font-size: 0.9rem;
     }
 
-    .create-task-btn,
-    .view-all-btn {
-        font-size: 0.85rem;
-        padding: 0.4rem 0.8rem;
+    .dashboard {
+        flex-direction: column;
     }
 
-    .task-row {
-        font-size: 0.85rem;
-    }
+    .sidebar{
 
-    .notifications ul li {
-        font-size: 0.85rem;
     }
+        .sidebar ul {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+        }
 
-    .sticky-notes {
-        font-size: 0.85rem;
+        .profile-box {
+            margin-top: -8vh;
+            margin-left: 6vw;
+        }
+
+        .calendar-box {
+            margin-top: -2vh;
+        }
+
+        .tasks-calendar {
+
+            margin-top: 40vh;
+        }
+
+        .create-task-btn,
+        .view-all-btn {
+            font-size: 0.85rem;
+            padding: 0.4rem 0.8rem;
+        }
+
+        .progress-section {
+            background-color: #fff;
+            border-radius: 10px;
+            width: 88vw;
+        }
+
+        .progress-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            flex-flow: nowrap;
+        }
+
+        .task-row {
+            font-size: 0.85rem;
+        }
+
+        .notifications-card {
+            margin-top: 4vh;
+        }
+
+        .notifications ul li {
+            font-size: 0.85rem;
+        }
+
+        .sticky-notes {
+            font-size: 0.85rem;
+        }
     }
-}

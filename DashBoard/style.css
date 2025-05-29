@@ -32,14 +32,13 @@ body {
   padding: 1rem 2rem;
   flex-wrap: wrap;
   width: 100%;
-  position: fixed; /* optional, if you want it sticky */
-  top: 0; /* for fixed navbar */
+  position: fixed; 
+  top: 0; 
   left: 0;
   z-index: 1000;
 }
 
 
-/* Left: Logo + Brand */
 .navbar-left {
     display: flex;
     align-items: center;
@@ -57,7 +56,6 @@ body {
     font-weight: 600;
 }
 
-/* Center: Icons */
 .navbar-center {
     display: flex;
     gap: 1.5rem;
@@ -69,7 +67,6 @@ body {
     color: white;
 }
 
-/* Right: Profile */
 .navbar-profile {
     display: flex;
     align-items: center;
@@ -89,7 +86,6 @@ body {
     font-size: 1rem;
     font-weight: 500;
 }
-/* Login container */
 .login-container {
   background-color: #ffffff;
   padding: 30px 40px;
