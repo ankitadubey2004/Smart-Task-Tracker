@@ -45,14 +45,14 @@ PORT=5000
 5. Start the backend:
 ```bash
 cd backend
-npm start dev
+npm run dev
 ```
  
 
 6. Start the frontend:
 ```bash
 cd ../DashBoard
-npm start dev
+npm run dev
 ```
 
 ---
