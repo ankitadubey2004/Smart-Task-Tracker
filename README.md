@@ -1,4 +1,4 @@
-# 🧑‍💻 Novexus Internship Careers Page
+# 🧑‍💻 Smart Task Tracker - TinyMind
 
 A full-stack task management web application designed to help users efficiently manage their daily activities. It offers smart features such as task creation, editing, priority tagging, deadline alerts, calendar integration, and a visually intuitive dashboard. The application is built with a responsive user interface, clean UI/UX design principles, and a robust backend for reliable data handling.
 
@@ -59,7 +59,7 @@ npm run dev
 
 
 ## 🔗 Live Site
-[Live Site](https://tidymind-dash.netlify.app/)
+[Live Site](https://tinymind-dash.netlify.app/)
 
 ---
 
@@ -99,7 +99,7 @@ npm run dev
 ## 👩‍💻 Developer
 - **Intern** : Ankita Dubey
 -  **Start Date** : 26 May 2025
--  **Submission Date** : 03 June 2025
+-  **Submission Date** : 02 June 2025
 -  **Mentor** : Aryan Parashar
 
 
