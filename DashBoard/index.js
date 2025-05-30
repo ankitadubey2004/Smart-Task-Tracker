@@ -141,7 +141,7 @@ yearSelect.addEventListener("change", () => {
 
 document.addEventListener('DOMContentLoaded', function () {
   const createTaskBtn = document.querySelector(".create-task-btn");
-const modal = document.getElementById("taskPopup");
+  const modal = document.getElementById("taskPopup");
   const closeModalBtn = document.getElementById("close-modal");
   const form = document.getElementById("taskform");
   const taskListContainer = document.querySelector(".task-list");
@@ -250,22 +250,22 @@ const modal = document.getElementById("taskPopup");
   });
 
   // Icon click to open popup
-  document.querySelectorAll('.card .fa-square-plus').forEach(icon => {
-    icon.addEventListener('click', () => {
-      document.getElementById('taskPopup').style.display = 'block';
-    });
+document.querySelectorAll('.card .fa-square-plus').forEach(icon => {
+  icon.addEventListener('click', () => {
+    document.getElementById('taskPopup').classList.remove('hidden');
   });
+});
 
-  function closePopup() {
-    document.getElementById('taskPopup').style.display = 'none';
-  }
+function closePopup() {
+  document.getElementById('taskPopup').classList.add('hidden');
+}
 
-  document.getElementById('taskForm')?.addEventListener('submit', function (e) {
+  document.getElementById('taskform')?.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const taskName = document.getElementById('taskName').value.trim();
-    const taskCategory = document.getElementById('taskCategory').value.trim();
-    const taskDeadline = document.getElementById('taskDeadline').value;
+    const taskName = document.getElementById('task-title').value.trim();
+    const taskCategory = document.getElementById('task-category').value.trim();
+    const taskDeadline = document.getElementById('task-deadline').value;
 
     if (!taskName || !taskCategory || !taskDeadline) {
       alert('Please fill in all fields');
@@ -381,15 +381,3 @@ noteForm.addEventListener("submit", (e) => {
 });
 
 loadNotes();
-// const addNotificationBtn = document.getElementById("add-notification-btn");
-// const notificationModal = document.getElementById("notification-modal");
-// const closeNotificationModal = document.getElementById("close-notification-modal");
-
-// addNotificationBtn.addEventListener("click", () => {
-//   notificationModal.classList.remove("hidden");
-// });
-
-// closeNotificationModal.addEventListener("click", () => {
-//   notificationModal.classList.add("hidden");
-// });
-

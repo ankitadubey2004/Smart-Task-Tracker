@@ -41,11 +41,11 @@
         <aside class="sidebar">
             <ul>
                 <li><a href="index.html">Dashboard</a></li>
-                <li>Personal</li>
+                <!-- <li>Personal</li>
                 <li>Work</li>
                 <li>Educational</li>
                 <li>Lifestyle</li>
-                <li>Market & Sales</li>
+                <li>Market & Sales</li> -->
             </ul>
         </aside>
 
@@ -67,7 +67,7 @@
                     <p>Add new task</p>
                     <i class="fa-solid fa-square-plus"></i>
                 </div><!-- Popup Form -->
-                <div id="taskPopup" class="popup">
+                <div id="taskPopup" class="hidden">
                     <div class="popup-content">
                         <span class="close-btn" onclick="closePopup()">&times;</span>
                         <h2>Add New Task</h2>
@@ -250,12 +250,6 @@
                     </div>
                 </div>
 
-                <!-- Header -->
-                <!-- <div class="card-header">
-                    <h3>Upcoming tasks</h3>
-                    <button class="create-task-btn">Create new task</button>
-                </div>
- -->
                 <!-- Task Table -->
                 <div class="task-table">
                     <div class="task-row heading" style="font-weight:bold;">
@@ -324,7 +318,76 @@
                 </ul>
                 <!-- Existing notes will be dynamically inserted here -->
             </div>
+            <div class="recommendation-container">
+                <div class="recommendation-section-wrapper">
+                    <h2>Activity Recommendation</h2>
 
+                    <!-- Scrollable container for cards -->
+                    <div class="recommendation-section-scroll">
+                        <div class="recommendation-section">
+                            <div class="recommendation-card">
+                                <img src="assests/images/recomm6-removebg-preview.png" alt="Activity 1">
+                                <h2>🎨 Creative & Hobby-Based Activities</h2>
+                                <ul>
+                                    <li>🎸 "Try learning a new instrument for 15 minutes — <br> YouTube has great beginner
+                                        lessons."
+
+                                    </li>
+                                    <li>🎨 "Pick up a sketchbook and draw what your current <br> mood feels like."
+
+                                    </li>
+                                    <li>📷 "Go on a short photo walk — capture 3 interesting <br> things in your
+                                        neighborhood."
+
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="recommendation-card">
+                                <img src="assests/images/recom2-removebg-preview.png" alt="Activity 2">
+                                <h2>🎵 Experiential / Local Activities</h2>
+                                <ul>
+                                    <li>🎫 "Check if there’s a local concert or art event happening <br> this weekend."</li>
+                                    <li>☕ "Visit a nearby café or bookstore you've never been <br>to before."</li>
+                                    <li>🧘 "Find a local yoga or meditation class-even one session <br> can recharge you."</li>
+                                </ul>
+                            </div>
+                            <div class="recommendation-card">
+                                <img src="assests/images/recc5-removebg big.png" alt="Activity 3">
+                                <h2>🌱 Growth & Connection Activities</h2>
+                                <ul>
+                                    <li>📚 "Join a local book club or an online discussion forum."</li>
+                                    <li>🌍 "Volunteer for a cause you care about — even 1 hour a <br>week can make a difference."</li>
+                                    <li>🧑‍🤝‍🧑 "Reach out to a friend you haven’t seen in a while and <br>plan a catch-up."</li>
+                                    <li>🧪 "Sign up for a short online class in something you know <br> nothing about — just for curiosity."</li>
+                                    <li>🧑‍🤝‍🧑 "Reach out to a friend you haven’t seen in a while and <br>plan a catch-up."</li>
+
+                                </ul>
+                            </div>
+                            <div class="recommendation-card">
+                                <img src="assests/images/recomm4-removebg-preview.png" alt="Activity 4">
+                                <h2>🎯 "Plan a Mini Adventure Day"</h2>
+                                <ul>
+                                    <li>🗺️ Look up a local place you've never visited (park, museum,<br> hidden café, walking trail)</li>
+                                    <li>📸 Bring a notebook or camera to capture moments or thoughts</li>
+                                    <li>🍽️ Treat yourself to a new food spot along the way</li>
+
+                                </ul>
+                            </div>
+                            <div class="recommendation-card">
+                                <img src="assests/images/rec1-removebg-ig.png" alt="Activity 5">
+                                <h2>✨ "Create a No-Work Evening Ritual"</h2>
+                                <ul>
+                                    <li>🕯️ Light a candle or dim the lights to set a calm vibe</li>
+                                    <li>📖 Read a physical book or magazine for 20–30 minutes</li>
+                                    <li>🛁 Take a relaxing shower or bath with music or silence</li>
+                                    <li>✍️ Journal 3 thoughts: What felt good today? What <br> drained me? What am I grateful for?</li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <script src="index.js"></script>

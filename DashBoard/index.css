@@ -560,7 +560,7 @@ header .icons span {
 }
 
 .hidden {
-    display: none !important;
+    display: none;
 }
 
 .modal {
@@ -651,7 +651,7 @@ header .icons span {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     max-width: 22vw;
     margin-left: 57vw;
-    margin-top: -50vh;
+    margin-top: -55vh;
 }
 
 .notifications-card h3 {
@@ -926,19 +926,91 @@ header .icons span {
     object-fit: contain;
 }
 
-.upcoming-events {
-    background-color: #3e1ca7;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+.recommendation-container {
+  padding: 30px 5px;
+  background: #fff;
+  display: flex;
+    justify-content: center;
+
+  margin-top: 60px;
+}
+.recommendation-section-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding-bottom: 15px;
 }
 
-.avatars img {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    margin-right: 0.5rem;
+.recommendation-section-wrapper {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.recommendation-section-wrapper h2 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Cards layout */
+.recommendation-section {
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: row;
+  gap:45px;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+
+}
+
+.recommendation-card {
+    background: linear-gradient(180deg, #1f1133, #5b08a6);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  transition: transform 0.3s ease;
+    flex: 0 0 auto; /* prevent shrinking */
+  width: 400px;
+  height: 600px;
+    word-wrap: break-word;       /* breaks long words if needed */
+  overflow-wrap: break-word;   /* ensures text wraps inside box */
+  text-align: center;          /* centers text and image */
+
+
+}
+
+.recommendation-card:hover {
+  transform: translateY(-5px);
+}
+
+.recommendation-card img {
+  width: 80%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recommendation-card h2 {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+    word-wrap: break-word;
+    margin-bottom: 10px;
+
+}
+.recommendation-card ul {
+  padding-left: 20px;
+  text-align: left;
+  font-size: 14px;
+  color: white;
+  list-style-type: disc;
+  word-wrap: break-word;
+
 }
 
 
@@ -1069,64 +1141,63 @@ header .icons span {
         flex-direction: column;
     }
 
-    .sidebar{
+    .sidebar {}
 
+    .sidebar ul {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
     }
-        .sidebar ul {
-            display: flex;
-            flex-direction: row;
-            gap: 1rem;
-        }
 
-        .profile-box {
-            margin-top: -8vh;
-            margin-left: 6vw;
-        }
-
-        .calendar-box {
-            margin-top: -2vh;
-        }
-
-        .tasks-calendar {
-
-            margin-top: 40vh;
-        }
-
-        .create-task-btn,
-        .view-all-btn {
-            font-size: 0.85rem;
-            padding: 0.4rem 0.8rem;
-        }
-
-        .progress-section {
-            background-color: #fff;
-            border-radius: 10px;
-            width: 88vw;
-        }
-
-        .progress-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            flex-flow: nowrap;
-        }
-
-        .task-row {
-            font-size: 0.85rem;
-        }
-
-        .notifications-card {
-            margin-top: 4vh;
-        }
-
-        .notifications ul li {
-            font-size: 0.85rem;
-        }
-
-        .sticky-notes {
-            font-size: 0.85rem;
-        }
+    .profile-box {
+        margin-top: -8vh;
+        margin-left: 6vw;
     }
+
+    .calendar-box {
+        margin-top: -2vh;
+    }
+
+    .tasks-calendar {
+
+        margin-top: 40vh;
+    }
+
+    .create-task-btn,
+    .view-all-btn {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .progress-section {
+        background-color: #fff;
+        border-radius: 10px;
+        width: 88vw;
+    }
+
+    .progress-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        flex-flow: nowrap;
+    }
+
+    .task-row {
+        font-size: 0.85rem;
+    }
+
+    .notifications-card {
+        margin-top: 4vh;
+    }
+
+    .notifications ul li {
+        font-size: 0.85rem;
+    }
+
+    .sticky-notes {
+        font-size: 0.85rem;
+    }
+}

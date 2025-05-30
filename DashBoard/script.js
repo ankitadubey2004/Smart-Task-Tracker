@@ -93,7 +93,7 @@ function handleSignup(event) {
 
   const signupData = { name, email, password };
 
-  fetch('http://localhost:5000/api/auth/signup', {
+  fetch('https://smart-task-tracker.onrender.com/api/auth/signup', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(signupData)
@@ -106,7 +106,7 @@ function handleSignup(event) {
         alert("Signup successful!");
         localStorage.setItem('token', data.token);
         localStorage.setItem('name', data.user?.name || name);
-        localStorage.setItem('image', assests/images/prfille_picture-removebg-preview.png); // Set default image always
+        localStorage.setItem('image', assests / images / prfille_picture - removebg - preview.png); // Set default image always
 
         window.location.href = 'login.html';
       } else {
@@ -127,7 +127,7 @@ function handleLogin(event) {
 
   const loginData = { email, password };
 
-  fetch('http://localhost:5000/api/auth/login', {
+  fetch('https://smart-task-tracker.onrender.com/api/auth/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(loginData)
