@@ -389,7 +389,7 @@ header .icons span {
 .progress-list li {
     border-radius: 8px;
     padding: 1rem;
-    width: 180px;
+    width: 165px;
     text-align: center;
     transition: transform 0.2s ease;
 }
@@ -651,7 +651,7 @@ header .icons span {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     max-width: 22vw;
     margin-left: 57vw;
-    margin-top: -60vh;
+    margin-top: -50vh;
 }
 
 .notifications-card h3 {

@@ -141,9 +141,9 @@ yearSelect.addEventListener("change", () => {
 
 document.addEventListener('DOMContentLoaded', function () {
   const createTaskBtn = document.querySelector(".create-task-btn");
-  const modal = document.getElementById("task-modal");
+const modal = document.getElementById("taskPopup");
   const closeModalBtn = document.getElementById("close-modal");
-  const form = document.getElementById("task-form");
+  const form = document.getElementById("taskform");
   const taskListContainer = document.querySelector(".task-list");
 
   const priorityValue = { high: 1, medium: 2, low: 3 };
@@ -381,15 +381,15 @@ noteForm.addEventListener("submit", (e) => {
 });
 
 loadNotes();
-const addNotificationBtn = document.getElementById("add-notification-btn");
-const notificationModal = document.getElementById("notification-modal");
-const closeNotificationModal = document.getElementById("close-notification-modal");
+// const addNotificationBtn = document.getElementById("add-notification-btn");
+// const notificationModal = document.getElementById("notification-modal");
+// const closeNotificationModal = document.getElementById("close-notification-modal");
 
-addNotificationBtn.addEventListener("click", () => {
-  notificationModal.classList.remove("hidden");
-});
+// addNotificationBtn.addEventListener("click", () => {
+//   notificationModal.classList.remove("hidden");
+// });
 
-closeNotificationModal.addEventListener("click", () => {
-  notificationModal.classList.add("hidden");
-});
+// closeNotificationModal.addEventListener("click", () => {
+//   notificationModal.classList.add("hidden");
+// });
 
